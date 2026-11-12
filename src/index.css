@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
+
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Poppins", sans-serif;
+  
+}
+html{
+    scroll-behavior: smooth;
+}
+body{
+  background-color:#f1f5f9 ;
+}
+
+
+/* About style  start here*/
+
+
+
+@keyframes scroll-right {
+    from {
+        transform: translateX(-50%);
+    }
+
+    to {
+        transform: translateX(0);
+    }
+}
+
+@keyframes scroll-left {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-50%);
+    }
+}
+
+@theme {
+    --animate-scroll-right: scroll-right 15s linear infinite;
+    --animate-scroll-left: scroll-left 15s linear infinite;
+}
