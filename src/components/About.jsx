@@ -1,6 +1,7 @@
 
 import { motion } from "framer-motion";
 
+
 import {
   FaHtml5,
   FaCss3Alt,
@@ -30,7 +31,7 @@ const technologies = [
 // Work Experience Data
 const experience = [
   {
-    year: "2023 - 2024",
+    year: "2022 - 2023",
     position: "IT Instructor",
     company: "STI College Legazpi",
     description:
@@ -171,8 +172,23 @@ export default function About() {
   return (
     <section
       id="about"
-      className="py-20 px-6 md:px-10 scroll-mt-24 min-h-screen"
+      className="py-20 px-6 md:px-10 scroll-mt-24 min-h-screen flex flex-col items-center gap-10"
     >
+      <motion.div 
+      
+       initial={{ opacity: 0, y: -40 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: false, amount: 0.5 }}
+        transition={{ duration: 0.7 }}
+        className="mb-10 ">
+        <img
+                    src={`${import.meta.env.BASE_URL}porfile2.jpg`}
+                    alt="Hero"
+                    className="w-48 h-48 sm:w-56 sm:h-56 md:w-64 md:h-64 lg:w-60 lg:h-60 rounded-full object-cover shadow-xl"
+                />
+      </motion.div>
+
+
       {/* About Heading */}
       <motion.h2
         initial={{ opacity: 0, y: -40 }}
@@ -236,6 +252,7 @@ export default function About() {
 
       {/* Work Experience */}
       <WorkExperience />
+
 
     </section>
   );

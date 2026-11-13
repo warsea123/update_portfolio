@@ -6,7 +6,7 @@ export default function Project() {
     return (
         <section
             id="projects"
-            className="project min-h-screen py-20 px-6 md:px-10 text-center scroll-mt-24"
+            className="project min-h-screen py-16 px-6 md:px-10 text-center scroll-mt-24"
         >
             {/* Section Heading */}
             <motion.h2

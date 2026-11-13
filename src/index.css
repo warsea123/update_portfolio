@@ -16,8 +16,6 @@ body{
 
 /* About style  start here*/
 
-
-
 @keyframes scroll-right {
     from {
         transform: translateX(-50%);

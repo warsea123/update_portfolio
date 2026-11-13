@@ -1,66 +1,80 @@
 
 import { motion } from "framer-motion";
+import { useState } from "react";
+import Card from "../ui/Card";
 
 export default function Contact() {
-  return (
-    <motion.section
-      id="contact"
-      className="w-full sm:w-3/4 mx-auto px-6 min-h-screen py-20 scroll-mt-20"
-      initial={{ opacity: 0, y: 60 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: false, amount: 0.2 }}
-      transition={{ duration: 0.8, ease: "easeOut" }}
-    >
-      {/* Heading */}
-      <motion.h2
-        className="text-2xl text-center font-semibold mb-6"
-        initial={{ opacity: 0, y: -30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: false }}
-        transition={{ duration: 0.6, delay: 0.2 }}
-      >
-        Contact Us
-      </motion.h2>
 
-      {/* Contact Form */}
-      <motion.form
-        className="bg-white p-6 rounded-lg shadow-md"
-        initial={{ opacity: 0, scale: 0.95 }}
-        whileInView={{ opacity: 1, scale: 1 }}
-        viewport={{ once: false }}
-        transition={{ duration: 0.7, delay: 0.3 }}
-      >
-        <motion.input
-          type="text"
-          placeholder="Name"
-          className="w-full p-2 mb-5 border border-orange-600 rounded focus:border-orange-700 focus:outline-none"
-          whileFocus={{ scale: 1.02 }}
-        />
+    const [showCard, setShowCard] = useState(false);
 
-        <motion.input
-          type="email"
-          placeholder="Email"
-          className="w-full p-2 mb-5 border border-orange-600 rounded focus:border-orange-700 focus:outline-none"
-          whileFocus={{ scale: 1.02 }}
-        />
-
-        <motion.textarea
-          placeholder="Message"
-          rows="5"
-          className="w-full p-2 mb-5 border border-orange-600 rounded focus:border-orange-700 focus:outline-none"
-          whileFocus={{ scale: 1.02 }}
-        />
-
-        <motion.button
-          type="submit"
-          className="bg-orange-500 text-white px-4 py-2 rounded hover:bg-orange-600 w-full sm:w-80 block mx-auto"
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          transition={{ duration: 0.2 }}
+    return (
+        <motion.section
+            id="contact"
+            className="w-full sm:w-3/4 mx-auto px-6 py-20 scroll-mt-20 flex justify-center items-center flex-col gap-6"
+            initial={{ opacity: 0, y: 60 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: false, amount: 0.2 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          Send
-        </motion.button>
-      </motion.form>
-    </motion.section>
-  );
+
+            <motion.h2
+                className="text-2xl text-center font-semibold mb-6"
+                initial={{ opacity: 0, y: -30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: false }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+            >
+                Contact Us
+            </motion.h2>
+
+            {!showCard ? (
+
+                <motion.div
+                    className="w-full sm:w-3/4 lg:w-2/3 mx-auto bg-slate-50 shadow-lg rounded-2xl p-6 md:p-10 border-orange-400 border-2"
+                    initial={{ opacity: 0, y: 40 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.7 }}
+                >
+
+                    <div className="flex flex-col gap-3 text-center">
+
+                        <span className="text-sm font-semibold uppercase tracking-widest text-orange-500">
+                            Get in touch
+                        </span>
+
+                        <h1 className="text-3xl md:text-4xl font-bold text-slate-800">
+                            Let's work <span className="text-orange-500">together.</span>
+                        </h1>
+
+                        <p className="text-sm md:text-base leading-relaxed text-gray-600 max-w-lg mx-auto">
+                            Have a project or opportunity? I'd love to hear from you.
+                            Feel free to reach out and let's create something great together.
+                        </p>
+
+                        <button
+                            type="button"
+                            onClick={() => setShowCard(true)}
+                            className="inline-block py-3 px-6 text-white bg-orange-600 border-orange-400 border-2 hover:bg-orange-400"
+                        >
+                            Get Started
+                        </button>
+
+                    </div>
+                </motion.div>
+
+            ) : (
+
+                <motion.div
+                    className="w-full"
+                    initial={{ opacity: 0, y: 30 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5 }}
+                >
+                    <Card onClose={() => setShowCard(false)} />
+                </motion.div>
+
+            )}
+
+        </motion.section>
+    );
 }
